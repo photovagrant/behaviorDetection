@@ -1,0 +1,2 @@
+git remote add origin https://github.com/photovagrant/behaviorDetection.git
+git push -u origin master
