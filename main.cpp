@@ -30,12 +30,12 @@ int checkVideoStatus(VideoCapture cap)
 int main(int argc, char* argv[])
 {
     //open the video file for reading
-    VideoCapture cap1("/Users/assam/Desktop/弓的知識上長下短為什麼.mov");
-    VideoCapture cap2("/Users/assam/Desktop/弓的知識上長下短為什麼.mov");
+    //VideoCapture cap1("/Users/assam/Desktop/弓的知識上長下短為什麼.mov");
+    //VideoCapture cap2("/Users/assam/Desktop/弓的知識上長下短為什麼.mov");
 
-    //VideoCapture cap1("rtsp://admin:admin@172.19.148.131/play1.sdp");
+    VideoCapture cap1("rtsp://admin:admin@172.19.148.68/play1.sdp");
     if( checkVideoStatus(cap1))  { return 0 ;};
-    //VideoCapture cap2("rtsp://admin:admin@172.19.148.128/play1.sdp");
+    VideoCapture cap2("rtsp://admin:admin@172.19.148.128/play1.sdp");
     if( checkVideoStatus(cap2))  { return 0 ;};
     //VideoCapture cap(0);
     // // if not success, exit program
@@ -51,11 +51,11 @@ int main(int argc, char* argv[])
     //cap.set(CAP_PROP_POS_MSEC, 300);
     
     //get the frames rate of the video
-    double fps = cap1.get(CAP_PROP_FPS);
-    cout << "Frames 1 per seconds : " << fps << endl;
+    //double fps = cap1.get(CAP_PROP_FPS);
+    //cout << "Frames 1 per seconds : " << fps << endl;
     
-    fps = cap2.get(CAP_PROP_FPS);
-    cout << "Frames 2 per seconds : " << fps << endl;
+    //fps = cap2.get(CAP_PROP_FPS);
+    //cout << "Frames 2 per seconds : " << fps << endl;
     
     vector<Mat> images;
     
