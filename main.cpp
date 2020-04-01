@@ -12,6 +12,12 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <unistd.h>
+
+#include <fstream>
+
+extern "C" {
+#include <libavcodec/avcodec.h>
+}
 using namespace cv;
 using namespace std;
 
@@ -32,7 +38,7 @@ int main(int argc, char* argv[])
     //open the video file for reading
     //VideoCapture cap1("/Users/assam/Desktop/弓的知識上長下短為什麼.mov");
     //VideoCapture cap2("/Users/assam/Desktop/弓的知識上長下短為什麼.mov");
-
+    
     VideoCapture cap1("rtsp://admin:admin@172.19.148.68/play1.sdp");
     if( checkVideoStatus(cap1))  { return 0 ;};
     VideoCapture cap2("rtsp://admin:admin@172.19.148.128/play1.sdp");
@@ -64,9 +70,9 @@ int main(int argc, char* argv[])
     namedWindow(window_name, WINDOW_NORMAL); //create a window
     bool bSuccess = false;
     Mat tmpframe,frame1,frame2;
-    Mat DispImage = Mat::zeros(Size(1280,720), CV_8UC3);
-    Rect ROI1(20, 0, 640, 360);
-    Rect ROI2(640, 0, 640, 360);
+    Mat DispImage = Mat::zeros(Size(1920,1080), CV_8UC3);
+    Rect ROI1(10, 0, 640, 360);
+    Rect ROI2(1200, 0, 640, 360);
     Mat tmp;
     while (true)
     {
@@ -102,13 +108,16 @@ int main(int argc, char* argv[])
         //If the any other key is pressed, continue the loop
         //If any key is not pressed withing 10 ms, continue the loop
         
-        if (waitKey(10) == 27)
+        if (waitKey(1) == 27)
         {
             cout << "Esc key is pressed by user. Stoppig the video" << endl;
             break;
         }
     }
-    
+    frame1.release();    
+    frame2.release();    
+    tmpframe.release();    
+    DispImage.release();    
     return 0;
     
 }
